@@ -7,14 +7,14 @@ import {PokemonProvider} from '../../providers/pokemon/pokemon';
   templateUrl: 'pokedex.html'
 })
 export class Pokedex {
-  pokemon:any;
-  pokemonId:string;
-  constructor(public navCtrl: NavController, private pokemonProvider:PokemonProvider) {
+  
 
-  }
+
+  constructor(public navCtrl: NavController, private pokemonProvider:PokemonProvider) {}\
+
   ionViewWillEnter(){
-    this.pokemonId = '1';
-    this.pokemonProvider.getPokemon(this.pokemonId)
+ 
+    this.pokemonProvider.getPokemons()
       .subscribe(pokemon => {
         console.log(pokemon);
       });
