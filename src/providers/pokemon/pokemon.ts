@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { mergeMap } from 'rxjs/operators';
+import { of } from 'rxjs/observable/of';
 
 /*
   Generated class for the PokemonProvider provider.
@@ -17,6 +19,8 @@ export class PokemonProvider {
   }
 
   getPokemon(){
-    return this.http.get(this.url+'pokemon/');
+    return this.http.get(this.url+'pokemon/').pipe(
+      mergeMap((res:any) => of({next: res.next, pokemon: res.results}))
+    );
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import {PokemonProvider} from '../../providers/pokemon/pokemon';
+import { Store } from '@ngrx/store';
+import { PokedexState } from './state/pokedex.reducer';
+import { PokedexActionTypes } from './state/pokedex.actions';
 
 @Component({
   selector: 'page-pokedex',
@@ -10,14 +11,12 @@ export class Pokedex {
   
 
 
-  constructor(public navCtrl: NavController, private pokemonProvider:PokemonProvider) {}\
+  constructor(
+    private store: Store<PokedexState>,) {}
 
   ionViewWillEnter(){
- 
-    this.pokemonProvider.getPokemons()
-      .subscribe(pokemon => {
-        console.log(pokemon);
-      });
+    
+    this.store.dispatch({type: PokedexActionTypes.QUERY});
   }
   
 }

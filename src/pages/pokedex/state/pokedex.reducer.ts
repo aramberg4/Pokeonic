@@ -20,7 +20,9 @@ export interface PokedexState extends EntityState<Pokemon> {
     uiState: PokedexUiState;
 }
 
-const pokeAdapter = createEntityAdapter<Pokemon>();
+const pokeAdapter = createEntityAdapter<Pokemon>({
+    selectId: (pokemon: Pokemon) => pokemon.url.split('/')[pokemon.url.split('/').length - 2]
+});
 const initialState: PokedexState = pokeAdapter.getInitialState({
     uiState: PokedexUiState.LOADED
 });
