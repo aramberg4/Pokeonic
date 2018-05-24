@@ -3,6 +3,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { 
     PokedexActionTypes, 
     Query,
+    Add,
  } from './pokedex.actions';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { PokemonProvider } from '../../../providers/pokemon/pokemon';
@@ -20,7 +21,8 @@ export class PokedexFacade {
         map(({next, pokemon}) => {
             console.log(pokemon);
             
-            return {type: PokedexActionTypes.ADD, payload: {pokemons: pokemon}};
+            // return {type: PokedexActionTypes.ADD, payload: {pokemons: pokemon}};
+            return new Add({pokemons: pokemon});
         }),
         catchError(error => of(error))
     );
