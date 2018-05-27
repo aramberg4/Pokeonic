@@ -14,11 +14,11 @@ export class PokemonProvider {
 
   constructor(public http: HttpClient) {
     console.log('Hello PokemonProvider Provider');
-    this.url = 'http://localhost:8100/api/';
+    this.url = '/api';
   }
 
   getPokemon(pokemonId){
-    return this.http.get(this.url+'pokemon/'+pokemonId+'.json')
+    return this.http.get(this.url+'/pokemon/'+pokemonId+'.json')
       .map(res => res.toString());
   }
 }
