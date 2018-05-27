@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/map';
 
 /*
   Generated class for the PokemonProvider provider.
@@ -18,6 +17,7 @@ export class PokemonProvider {
   }
 
   getPokemon(pokemonId){
+<<<<<<< HEAD
     return this.http.get(this.url+'/pokemon/'+pokemonId+'.json')
       .map(res => res.toString());
   }
